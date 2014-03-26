@@ -1,0 +1,41 @@
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="/datamaps.world.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<div id="container" style="position: relative; width: 1000px; height: 500px; background: #2a2a2a"></div>
+<script>
+	$.getJSON("followerlocations.json", function(dt) {
+		console.log(dt)
+	
+    var map = new Datamap({
+        element: document.getElementById('container'),
+        fills: {
+        	VERY_LOW: '#66c2ff',
+        	LOW: '#33adff',
+        	MEDIUM: '#005c99',
+            HIGH: '#002e4d',
+            UNKNOWN: 'rgb(205,205,205)',
+            defaultFill: '#939393'
+        },
+        data: dt,
+        geographyConfig: {
+            popupTemplate: function(geo, data) {
+            	if(data == null) {
+                	return ['<div class="hoverinfo"><strong>',
+                		geo.properties.name + '</strong>',
+                        '</div>'
+                        ].join('');
+                }
+                else{
+                	console.log("got here")
+                	return ['<div class="hoverinfo"><strong>',
+                		geo.properties.name + '</strong>',
+                		'\r\n Number of Twitter followers are : ' + data.numberOfThings,
+                        '</div>'
+                        ].join('');
+                }
+            }
+        }
+    });
+    });
+</script>
