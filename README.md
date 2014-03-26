@@ -14,3 +14,5 @@ A D3 map visualization of your twitter followers
 5) In your broswer go to "localhost:8000" and click on the html file.
 
 6) This should render your twitter followers map. Hovering over the countries gives you an exact number of followers from a particular country.
+
+![alt tag](https://raw.github.com/pratiknaik/TwitterMaps/master/German Chancellor's twitter followers.png)
